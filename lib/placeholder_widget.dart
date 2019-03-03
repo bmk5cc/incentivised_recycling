@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'home_widget.dart';
 class IncrementButton extends StatefulWidget {
   Function() incrementCounts;
-  int todayCounts;
 
-  IncrementButton(this.todayCounts, this.incrementCounts);
+  IncrementButton(this.incrementCounts);
 
   @override
   _IncrementButtonState createState() => new _IncrementButtonState();

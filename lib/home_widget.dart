@@ -14,9 +14,14 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     _children = [
-      IncrementButton(_todayCount, incrementCounts),
-      IncrementButton(_todayCount, incrementCounts),
-      IncrementButton(_todayCount, incrementCounts)
+      Column(
+        children: <Widget>[
+          Text(_todayCount.toString()),
+          IncrementButton(incrementCounts),
+        ],
+      ),
+      IncrementButton(incrementCounts),
+      IncrementButton(incrementCounts)
     ];
   }
 
@@ -28,6 +33,17 @@ class _HomeState extends State<Home> {
     setState(() {
       _todayCount++;
       _totalCount++;
+
+      _children = [
+        Column(
+          children: <Widget>[
+            Text(_todayCount.toString()),
+            IncrementButton(incrementCounts),
+          ],
+        ),
+        IncrementButton(incrementCounts),
+        IncrementButton(incrementCounts)
+      ];
     });
     print('incrementing');
     print(_todayCount);
