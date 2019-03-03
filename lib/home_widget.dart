@@ -16,7 +16,15 @@ class _HomeState extends State<Home> {
     _children = [
       Column(
         children: <Widget>[
-          Text(_todayCount.toString()),
+          RichText(
+            text: TextSpan(
+              text: _todayCount.toString(),
+              style: DefaultTextStyle.of(context).style.apply(fontSizeDelta: 30), //using this to change font size, but not working
+              children: <TextSpan>[
+              ],
+            ),
+          ),
+
           IncrementButton(incrementCounts),
         ],
       ),
