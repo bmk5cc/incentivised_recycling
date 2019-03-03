@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'home_widget.dart';
-class PlaceholderWidget extends StatefulWidget {
-  final Color color;
+class IncrementButton extends StatefulWidget {
   Function() incrementCounts;
+  int todayCounts;
 
-  PlaceholderWidget(this.color, this.incrementCounts);
+  IncrementButton(this.todayCounts, this.incrementCounts);
 
   @override
-  _PlaceholderWidgetState createState() => new _PlaceholderWidgetState();
+  _IncrementButtonState createState() => new _IncrementButtonState();
 }
 
-class _PlaceholderWidgetState extends State<PlaceholderWidget>{
+class _IncrementButtonState extends State<IncrementButton>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.color,
-      child: new RaisedButton(onPressed: (){
-        widget.incrementCounts();
-      })
+      child:
+        new RaisedButton(onPressed: (){
+          widget.incrementCounts();
+        }),
     );
   }
 }

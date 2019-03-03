@@ -14,9 +14,9 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     _children = [
-      PlaceholderWidget(Colors.white, incrementCounts),
-      PlaceholderWidget(Colors.deepOrange, incrementCounts),
-      PlaceholderWidget(Colors.green, incrementCounts)
+      IncrementButton(_todayCount, incrementCounts),
+      IncrementButton(_todayCount, incrementCounts),
+      IncrementButton(_todayCount, incrementCounts)
     ];
   }
 
@@ -29,6 +29,8 @@ class _HomeState extends State<Home> {
       _todayCount++;
       _totalCount++;
     });
+    print('incrementing');
+    print(_todayCount);
   }
   List<Widget> _children;
   @override
@@ -62,5 +64,25 @@ class _HomeState extends State<Home> {
     setState(() {
       _currentIndex = index;
     });
+  }
+}
+
+class PageWidget extends StatefulWidget {
+  Function() incrementCounts;
+
+  PageWidget();
+
+  @override
+  _PageWidgetState createState() => new _PageWidgetState();
+}
+
+class _PageWidgetState extends State<PageWidget>{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: new RaisedButton(onPressed: (){
+          widget.incrementCounts();
+        })
+    );
   }
 }
