@@ -16,15 +16,7 @@ class _HomeState extends State<Home> {
     _children = [
       Column(
         children: <Widget>[
-          RichText(
-            text: TextSpan(
-              text: _todayCount.toString(),
-              style: DefaultTextStyle.of(context).style.apply(fontSizeDelta: 30), //using this to change font size, but not working
-              children: <TextSpan>[
-              ],
-            ),
-          ),
-
+          Text(_todayCount.toString()),
           IncrementButton(incrementCounts),
         ],
       ),
@@ -75,12 +67,12 @@ class _HomeState extends State<Home> {
             title: new Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Messages'),
+            icon: new Icon(Icons.shop),
+            title: new Text('Shop'),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text('Profile')
+              icon: Icon(Icons.assessment),
+              title: Text('Stats')
           )
         ],
       ),
