@@ -9,6 +9,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  int _todayCount = 0;
+  int _totalCount = 0;
+
+  incrementCounts(){
+    setState(() {
+      _todayCount++;
+      _totalCount++;
+    });
+  }
   final List<Widget> _children = [
     PlaceholderWidget(Colors.white),
     PlaceholderWidget(Colors.deepOrange),
