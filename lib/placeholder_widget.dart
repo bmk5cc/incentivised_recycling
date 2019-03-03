@@ -14,9 +14,12 @@ class _IncrementButtonState extends State<IncrementButton>{
   Widget build(BuildContext context) {
     return Container(
       child:
-        new RaisedButton(onPressed: (){
-          widget.incrementCounts();
-        }),
+        new RaisedButton(
+            onPressed: (){
+              widget.incrementCounts();
+            },
+            child: const Text("I Recycled!"),
+        ),
     );
   }
 }
