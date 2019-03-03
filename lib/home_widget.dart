@@ -66,23 +66,3 @@ class _HomeState extends State<Home> {
     });
   }
 }
-
-class PageWidget extends StatefulWidget {
-  Function() incrementCounts;
-
-  PageWidget();
-
-  @override
-  _PageWidgetState createState() => new _PageWidgetState();
-}
-
-class _PageWidgetState extends State<PageWidget>{
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: new RaisedButton(onPressed: (){
-          widget.incrementCounts();
-        })
-    );
-  }
-}
