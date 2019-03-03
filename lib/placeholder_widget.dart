@@ -10,15 +10,13 @@ class IncrementButton extends StatefulWidget {
 }
 
 class _IncrementButtonState extends State<IncrementButton>{
+
+
+
   @override
   Widget build(BuildContext context) {
 
-//    FlutterBlue flutterBlue = FlutterBlue.instance;
-//
-//    /// Start scanning
-//    var scanSubscription = flutterBlue.scan().listen((scanResult) {
-//
-//    });
+
     return Container(
       child:
         new RaisedButton(

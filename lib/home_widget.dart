@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'placeholder_widget.dart';
 class Home extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  FlutterBlue flutterBlue;
 
   @override
   void initState() {
@@ -23,6 +26,33 @@ class _HomeState extends State<Home> {
       IncrementButton(incrementCounts),
       IncrementButton(incrementCounts)
     ];
+    flutterBlue = FlutterBlue.instance;
+    var scanSubscription = flutterBlue.scan().listen((scanResult) async {
+      print(scanResult.advertisementData.localName);
+      print(scanResult.advertisementData.serviceData);
+      print("@@@@@@@@@@@@@@@@@@@@@@@@@");
+      if(scanResult.advertisementData.localName== 'ItsTime'){
+          var deviceConnection = flutterBlue.connect(scanResult.device).listen((s) async {
+            if(s == BluetoothDeviceState.connected) {
+              List<BluetoothService> services = await scanResult.device.discoverServices();
+              services.forEach((service) async {
+                for(BluetoothCharacteristic c in service.characteristics) {
+                  if (c.uuid == new Guid("88888888-4444-4444-4444-ccccccccccc1")) {
+                    await scanResult.device.setNotifyValue(c, true);
+                    scanResult.device.onValueChanged(c).listen((value) {
+                      incrementCounts();
+                    });
+                  }
+                }
+              });
+            }
+          });
+          deviceConnection.cancel();
+        }
+    });
+
+
+    scanSubscription.cancel();
   }
 
   int _currentIndex = 0;
