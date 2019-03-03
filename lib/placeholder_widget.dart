@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
-
-class PlaceholderWidget extends StatelessWidget {
+import 'home_widget.dart';
+class PlaceholderWidget extends StatefulWidget {
   final Color color;
+  Function() incrementCounts;
 
-  PlaceholderWidget(this.color);
+  PlaceholderWidget(this.color, this.incrementCounts);
 
+  @override
+  _PlaceholderWidgetState createState() => new _PlaceholderWidgetState();
+}
+
+class _PlaceholderWidgetState extends State<PlaceholderWidget>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color,
+      color: widget.color,
+      child: new RaisedButton(onPressed: (){
+        widget.incrementCounts();
+      })
     );
   }
 }

@@ -5,9 +5,21 @@ class Home extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _HomeState();
   }
+
 }
 
 class _HomeState extends State<Home> {
+
+  @override
+  void initState() {
+    super.initState();
+    _children = [
+      PlaceholderWidget(Colors.white, incrementCounts),
+      PlaceholderWidget(Colors.deepOrange, incrementCounts),
+      PlaceholderWidget(Colors.green, incrementCounts)
+    ];
+  }
+
   int _currentIndex = 0;
   int _todayCount = 0;
   int _totalCount = 0;
@@ -18,11 +30,7 @@ class _HomeState extends State<Home> {
       _totalCount++;
     });
   }
-  final List<Widget> _children = [
-    PlaceholderWidget(Colors.white),
-    PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green)
-  ];
+  List<Widget> _children;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
